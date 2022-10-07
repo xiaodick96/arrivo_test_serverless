@@ -1,0 +1,43 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/dev/user/edit/{{user.UserID}}" method="POST" autocomplete="off" id="userForm">
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="Username" placeholder="User Name" value="{{user.Username}}">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="Password" placeholder="" value="">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="Email" placeholder="Email" value="{{user.Email}}">
+    </div>
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" name="FullName" placeholder="Full Name" value="{{user.FullName}}">
+    </div>
+    <div class="form-group">
+        <label>Membership</label>
+        {{#if admin}}       
+            <select name="Membership" id="membership" form="userForm">
+                <option value="Admin">Admin</option>
+                <option value="Premium">Premium</option>
+                <option value="Normal">Normal</option>
+            </select>
+        {{else}}
+            <div class="form-group">
+                <input type="text" class="form-control" name="Membership" value="{{user.Membership}}" disabled>
+                <input type = "hidden" name="Membership" value="{{user.Membership}}">
+            </div>
+        {{/if}} 
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+        {{#if admin}}
+            <a class="btn btn-secondary" href="/dev/user/list">Back to User List</a>
+        {{else}}
+            <a class="btn btn-secondary" href="/dev/home">Back to Homepage</a>
+        {{/if}}
+    </div>
+</form>

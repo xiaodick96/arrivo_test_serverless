@@ -1,0 +1,53 @@
+<h3>
+    {{#if admin}}
+        <a class="btn btn-secondary" href="/dev/category">Create New</a>
+    {{/if}} 
+    <a class="btn btn-info" href="/dev/home">Home Page</a> 
+    Category List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Activated</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if admin}}
+            {{#each list}}
+            <tr>
+                <td>{{this.CategoryID}}</td>
+                <td>{{this.Name}}</td>
+                <td>{{this.Description}}</td>
+                <td>{{this.Activated}}</td>
+                <td>{{this.CreatedAt}}</td>
+                <td>{{this.UpdatedAt}}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/dev/category/detail/{{this.CategoryID}}">Detail</a>
+                    <a class="btn btn-primary btn-sm" href="/dev/category/edit/{{this.CategoryID}}">Edit</a>
+                    <form action="/dev/category/delete/{{this.CategoryID}}" method="POST">
+                        <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure to delete this category?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        {{else}}
+            {{#each list}}
+            <tr>
+                <td>{{this.CategoryID}}</td>
+                <td>{{this.Name}}</td>
+                <td>{{this.Description}}</td>
+                <td>{{this.Activated}}</td>
+                <td>{{this.CreatedAt}}</td>
+                <td>{{this.UpdatedAt}}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/dev/category/detail/{{this.CategoryID}}">Detail</a>
+                </td>
+            </tr>
+            {{/each}}
+        {{/if}}
+    </tbody>
+</table>

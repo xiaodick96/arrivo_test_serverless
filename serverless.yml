@@ -1,0 +1,296 @@
+service: another-testing
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 512
+  stage: dev
+  timeout: 300
+  region: ap-southeast-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  createserver:
+    handler: server.createserver
+    events:
+      - http: 
+          path: /
+          method: get
+      - http: 
+          path: /home
+          method: get
+      - http: 
+          path: /login
+          method: get
+      - http:  # get auth0 callback
+          path: /callback
+          method: get
+      - http:  # post auth0 callback
+          path: /callback
+          method: post
+      - http:  # get froala-editor css
+          path: /froalacss
+          method: get
+      - http:  # get froala-editor js
+          path: /froalajs
+          method: get
+      - http: 
+          path: /logout
+          method: get
+      - http: 
+          path: /newUserfromAuth0
+          method: get
+      - http: 
+          path: /addnewauthuser
+          method: post
+      - http: 
+          path: /testing
+          method: get
+      - http: 
+          path: /loginform
+          method: post
+      - http: 
+          path: /logout
+          method: post
+      - http: 
+          path: /user
+          method: get
+      - http: 
+          path: /user/add
+          method: post
+      - http: 
+          path: /user/list
+          method: get
+      - http: 
+          path: /user/{id}
+          method: get
+      - http: 
+          path: /user/edit/{id}
+          method: get
+      - http: 
+          path: /user/edit/{id}
+          method: post
+      - http: 
+          path: /user/delete/{id}
+          method: post
+      - http: 
+          path: /post
+          method: get
+      - http: 
+          path: /post/add
+          method: post
+      - http: 
+          path: /post/list
+          method: get
+      - http: 
+          path: /post/detail/{id}
+          method: get
+      - http: 
+          path: /post/edit/{id}
+          method: get
+      - http: 
+          path: /post/edit/{id}
+          method: post
+      - http: 
+          path: /post/delete/{id}
+          method: post
+      - http: 
+          path: /category
+          method: get
+      - http: 
+          path: /category/add
+          method: post
+      - http: 
+          path: /category/list
+          method: get
+      - http: 
+          path: /category/detail/{id}
+          method: get
+      - http: 
+          path: /category/edit/{id}
+          method: get
+      - http: 
+          path: /category/edit/{id}
+          method: post
+      - http: 
+          path: /category/delete/{id}
+          method: post
+      - http: 
+          path: /payment/createpremiumbill/{id}
+          method: get
+      - http: 
+          path: /payment/finishpay
+          method: get
+  acceptlogindata:
+    handler: server.acceptlogindata
+    events:
+      - http: 
+          path: /user/login
+          method: post
+  addnewauthuser:
+    handler: server.addnewauthuser
+    events:
+      - http: 
+          path: /user/addnewauthuser
+          method: post
+  getuserbyemail:
+    handler: server.getuserbyemail
+    events:
+      - http: 
+          path: /user/getuserbyemail
+          method: get
+  getuserbyusername:
+    handler: server.getuserbyusername
+    events:
+      - http: 
+          path: /user/getuserbyusername
+          method: get
+  getuserlist:
+    handler: server.getuserlist
+    events:
+      - http: 
+          path: /user/getuserlist
+          method: get
+  getsingleuser:
+    handler: server.getsingleuser
+    events:
+      - http: 
+          path: /user/getsingleuser
+          method: get
+  insertuser:
+    handler: server.insertuser
+    events:
+      - http: 
+          path: /user/insertuser
+          method: post
+  updateuser:
+    handler: server.updateuser
+    events:
+      - http: 
+          path: /user/updateuser
+          method: post
+  updateusermembership:
+    handler: server.updateusermembership
+    events:
+      - http: 
+          path: /user/updateusermembership
+          method: post
+  destroyuser:
+    handler: server.destroyuser
+    events:
+      - http: 
+          path: /user/destroyuser
+          method: post
+  insertpost:
+    handler: server.insertpost
+    events:
+      - http: 
+          path: /post/insertpost
+          method: post
+  getpostlist:
+    handler: server.getpostlist
+    events:
+      - http: 
+          path: /post/getpostlist
+          method: get
+  getsinglepost:
+    handler: server.getsinglepost
+    events:
+      - http: 
+          path: /post/getsinglepost
+          method: get
+  updatepost:
+    handler: server.updatepost
+    events:
+      - http: 
+          path: /post/updatepost
+          method: post
+  destroypost:
+    handler: server.destroypost
+    events:
+      - http: 
+          path: /post/destroypost
+          method: post
+  insertcategory:
+    handler: server.insertcategory
+    events:
+      - http: 
+          path: /category/insertcategory
+          method: post
+  getcategorylist:
+    handler: server.getcategorylist
+    events:
+      - http: 
+          path: /category/getcategorylist
+          method: get
+  getsinglecategory:
+    handler: server.getsinglecategory
+    events:
+      - http: 
+          path: /category/getsinglecategory
+          method: get
+  updatecategory:
+    handler: server.updatecategory
+    events:
+      - http: 
+          path: /category/updatecategory
+          method: post
+  destroycategory:
+    handler: server.destroycategory
+    events:
+      - http: 
+          path: /category/destroycategory
+          method: post
+  createpremiumbill:
+    handler: server.createpremiumbill
+    events:
+      - http: 
+          path: /payment/createpremiumbill
+          method: post
+  updatepaymentstatus:
+    handler: server.updatepaymentstatus
+    events:
+      - http: 
+          path: /payment/updatepaymentstatus
+          method: post
+  
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# functions:
+#   createPet:
+#     handler: handler.create
+#       events:
+#         - http:
+#             path: pets          
+#             method: POST
+#   showPet:
+#     handler: handler.show
+#       events:
+#         - http:
+#             path: pets/{petId}          
+#             method: GET
+#   listPets:
+#     handler: handler.list
+#       events:
+#         - http:
+#             path: pets
+#             method: GET
+#   updatePet:
+#     handler: handler.update
+#       events:
+#         - http:
+#             path: pets/{petId}          
+#             method: PUT
+#   deletePet:
+#     handler: handler.delete
+#       events:
+#         - http:
+#             path: pets/{petId}          
+#             method: DELETE

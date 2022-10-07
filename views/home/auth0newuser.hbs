@@ -1,0 +1,20 @@
+<h1>{{viewTitle}}</h1>
+
+<form action="/dev/addnewauthuser" method="POST" autocomplete="off" id="userForm">
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="Username" placeholder="User Name" value="">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="Password" placeholder="" value="">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="showonly" placeholder="" value="{{email}}" disabled>
+        <input type = "hidden" name="Email" value="{{email}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+<h3>{{viewTitle}}</h3>
+
+<link rel="stylesheet" href="/dev/froalacss">
+<script src="/dev/froalajs"></script>
+
+<form action="/dev/category/edit/{{category.CategoryID}}" method="POST" autocomplete="off" id="postForm">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="Name" value="{{category.Name}}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea id="example" name="Description" >{{category.Description}}</textarea>
+    </div>
+    <script> var editor = new FroalaEditor("#example") </script>
+    <div class="form-group">
+        <label>Activated</label>
+        <input type="text" class="form-control" name="Activated" value="{{category.Activated}}" disabled>
+    </div>
+    <div class="form-group">
+        {{#if admin}}
+            <a class="btn btn-secondary" href="/dev/category/edit/{{category.CategoryID}}">Edit Category</a>
+        {{/if}}
+        <a class="btn btn-secondary" href="/dev/category/list">View All</a>
+    </div>
+</form>

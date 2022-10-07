@@ -1,0 +1,18 @@
+<h1>Welcome 
+            <a class="" href="/dev/user/{{id}}">{{user}}</a>,
+    <div>
+        {{#if status}}
+            <a class="btn btn-danger" href="/dev/logout">Log Out</a>
+        {{else}}
+            <form action="/dev/logout" method="POST" autocomplete="off">
+                <button type="submit" class="btn btn-info">Log Out</button>
+            </form>
+        {{/if}}
+    </div>
+</h1>
+{{#if admin}}
+    <h3><a class="btn btn-secondary" href="/dev/user/list">User</a></h3>
+{{/if}}
+<h3><a class="btn btn-secondary" href="/dev/post/list">Post</a></h3>
+<h3><a class="btn btn-secondary" href="/dev/category/list">Category</a></h3>
+</table>

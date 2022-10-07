@@ -1,0 +1,56 @@
+<h3>
+    {{#if admin}}
+        <a class="btn btn-secondary" href="/dev/post">Create New</a>
+    {{/if}}
+    <a class="btn btn-info" href="/dev/home">Home Page</a> 
+    Post List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>CategoryID</th>
+            <th>Status</th>
+            <th>Label</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if admin}}
+            {{#each list}}
+            <tr>
+                <td>{{this.PostID}}</td>
+                <td>{{this.Title}}</td>
+                <td>{{this.CategoryID}}</td>
+                <td>{{this.Status}}</td>
+                <td>{{this.Label}}</td>
+                <td>{{this.CreatedAt}}</td>
+                <td>{{this.UpdatedAt}}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/dev/post/detail/{{this.PostID}}">Detail</a>
+                    <a class="btn btn-primary btn-sm" href="/dev/post/edit/{{this.PostID}}">Edit</a>
+                    <form action="/dev/post/delete/{{this.PostID}}" method="POST">
+                        <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure to delete this post?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        {{else}}
+            {{#each list}}
+            <tr>
+                <td>{{this.PostID}}</td>
+                <td>{{this.Title}}</td>
+                <td>{{this.CategoryID}}</td>
+                <td>{{this.Status}}</td>
+                <td>{{this.Label}}</td>
+                <td>{{this.CreatedAt}}</td>
+                <td>{{this.UpdatedAt}}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/dev/post/detail/{{this.PostID}}">Detail</a>
+                </td>
+            </tr>
+            {{/each}}
+        {{/if}}
+    </tbody>
+</table>

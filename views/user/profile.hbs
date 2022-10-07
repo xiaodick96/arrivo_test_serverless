@@ -1,0 +1,31 @@
+<h3>{{viewTitle}}</h3>
+{{#if member}}
+    <h4>Become <a class="btn btn-secondary" href="/dev/payment/createpremiumbill/{{user.UserID}}">Premium</a></h4>
+{{/if}}
+
+<form action="/dev/user/edit/{{user.UserID}}" method="POST" autocomplete="off" id="userForm">
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="Username" value="{{user.Username}}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="Email" value="{{user.Email}}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" name="FullName" value="{{user.FullName}}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Membership</label>
+        <input type="text" class="form-control" name="Membership" value="{{user.Membership}}" disabled>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-secondary" href="/dev/user/edit/{{user.UserID}}">Edit User</a>
+        {{#if adminrole}}
+            <a class="btn btn-secondary" href="/dev/user/list">Back to User List</a>
+        {{else}}
+            <a class="btn btn-secondary" href="/dev/home">Back to Home</a>
+        {{/if}}
+    </div>
+</form>

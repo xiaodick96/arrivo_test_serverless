@@ -1,0 +1,40 @@
+<h3>
+    {{#if admin}}
+        <a class="btn btn-secondary" href="/dev/user">Create New</a>
+    {{/if}}
+    <a class="btn btn-info" href="/dev/home">Home Page</a> 
+    User List
+</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User name</th>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Membership</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.UserID}}</td>
+            <td>{{this.Username}}</td>
+            <td>{{this.FullName}}</td>
+            <td>{{this.Email}}</td>
+            <td>{{this.Membership}}</td>
+            <td>{{this.CreatedAt}}</td>
+            <td>{{this.UpdatedAt}}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/dev/user/{{this.UserID}}">Details</a>
+                <a class="btn btn-primary btn-sm" href="/dev/user/edit/{{this.UserID}}">Edit</a>
+                <form action="/dev/user/delete/{{this.UserID}}" method="POST">
+                    <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure to delete this user?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
